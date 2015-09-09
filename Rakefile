@@ -9,6 +9,13 @@ class String
       tr("-", "_").
       downcase
   end
+
+  def modularize
+    self.split(/[_-]/).map do |word|
+      chars = word.chars
+      ([chars.first.upcase] + chars.drop(1)).join
+    end.join
+  end
 end
 
 desc "Run migrations"
@@ -33,7 +40,7 @@ namespace :generate do
 
     File.open file, "w" do |f|
       f.puts %{
-class #{name} < ActiveRecord::Migration
+class #{name.modularize} < ActiveRecord::Migration
   def change
   end
 end}.strip

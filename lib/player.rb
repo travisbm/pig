@@ -6,4 +6,8 @@ class Player
     @name  = name
     @score = 0
   end
+
+  def to_s
+    "Player: #{name} -- Score: #{score}"
+  end
 end

@@ -21,6 +21,7 @@ class Pig
 
   def play_round
     @players.each do |p|
+      puts "-" * 20
       puts "\n\nIt is #{p.name}'s turn! You have #{p.score} points. (Press ENTER)"
       gets
       take_turn p
@@ -50,7 +51,7 @@ class Pig
         return
       else
         turn_total += roll
-        puts "You rolled a #{roll}. Turn total is #{turn_total}. Again?"
+        puts "You rolled a #{roll}. Turn total is #{turn_total}. Again? (y/n)"
         if gets.chomp.downcase == "n"
           puts "Stopping with #{turn_total} for the turn."
           player.score += turn_total
