@@ -1,9 +1,11 @@
 require_relative './player'
+require_relative './user'
+
 
 class Pig
   def initialize
     @players   = []
-    @max_score = 100
+    @max_score = 10
   end
 
   def get_players
@@ -15,6 +17,7 @@ class Pig
         return
       else
         @players.push Player.new(input)
+        User.find_or_create_by(:name => input)
       end
     end
   end

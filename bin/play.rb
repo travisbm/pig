@@ -1,3 +1,5 @@
+require_relative '../db/setup'
+require_relative '../lib/all'
 require_relative '../lib/pig'
 require_relative '../lib/hog'
 
@@ -32,4 +34,7 @@ game = game_class.new
 game.get_players
 
 game.play_round until game.winner
+  this_player = User.find_by(:name => game.winner.name)
+  this_player.wins += 1
+  this_player.save
 puts "#{game.winner} wins!"
